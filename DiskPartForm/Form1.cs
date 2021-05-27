@@ -18,8 +18,8 @@ namespace DiskPartForm
             InitializeComponent();
         }
 
-        private List<Disk> Drivers { get; set; } = Disks.getDisks();
-        private void refreshButton_Click(object sender, EventArgs e)
+        private List<Disk> Drivers { get; set; } = Disks.GetDisks();
+        private void RefreshButton_Click(object sender, EventArgs e)
         {
             var formatedDriversList = (from d in Drivers
                                        select new { Name = $"{d.Index} - ({d.status}) - {d.Size}", Value = d.Index }).ToList();
@@ -29,10 +29,10 @@ namespace DiskPartForm
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            refreshButton_Click(sender, e);
+            RefreshButton_Click(sender, e);
         }
 
-        private void repairButton_Click(object sender, EventArgs e)
+        private void RepairButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace DiskPartForm
                 var result = MessageBox.Show($"Are you sure do you want to format {selectedDrive.Index} - ({selectedDrive.status}) - {selectedDrive.Size} with {formatType} type?", "Confirm Disk Clean", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    resultTextBox.Text=Disks.cleanDisk(selectedDrive.Index, formatType);
+                    resultTextBox.Text=Disks.CleanDisk(selectedDrive.Index, formatType);
                 }
             }
             catch (Exception)

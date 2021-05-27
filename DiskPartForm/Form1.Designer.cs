@@ -58,7 +58,7 @@ namespace DiskPartForm
             this.refreshButton.TabIndex = 1;
             this.refreshButton.Text = "Refresh";
             this.refreshButton.UseVisualStyleBackColor = true;
-            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            this.refreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
             // groupBox1
             // 
@@ -101,7 +101,7 @@ namespace DiskPartForm
             this.repairButton.TabIndex = 3;
             this.repairButton.Text = "Repair";
             this.repairButton.UseVisualStyleBackColor = true;
-            this.repairButton.Click += new System.EventHandler(this.repairButton_Click);
+            this.repairButton.Click += new System.EventHandler(this.RepairButton_Click);
             // 
             // resultTextBox
             // 

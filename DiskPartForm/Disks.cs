@@ -9,13 +9,13 @@ namespace DiskPartForm
 {
     static class Disks
     {
-        internal static List<Disk> getDisks()
+        internal static List<Disk> GetDisks()
         {
-            string output = getDiskstable();
-            return getDisksList(output);
+            string output = GetDiskstable();
+            return GetDisksList(output);
         }
 
-        private static List<Disk> getDisksList(string output)
+        private static List<Disk> GetDisksList(string output)
         {
             string table = output.Split(new string[] { "DISKPART>" }, StringSplitOptions.None)[1];
             var rows = table.Split(new string[] { "\n" }, StringSplitOptions.None);
@@ -41,25 +41,25 @@ namespace DiskPartForm
             return disks;
         }
 
-        internal static string cleanDisk(string index, string formatType)
+        internal static string CleanDisk(string index, string formatType)
         {
-            Process process = runDiskpart();
+            Process process = RunDiskpart();
             process.StandardInput.WriteLine($"Select {index}");
             process.StandardInput.WriteLine("Clean");
             process.StandardInput.WriteLine("Create Partition Primary");
             process.StandardInput.WriteLine($"Format fs={formatType} Quick");
             process.StandardInput.WriteLine("Active");
-            return exitDiskpart(process);
+            return ExitDiskpart(process);
         }
 
-        private static string getDiskstable()
+        private static string GetDiskstable()
         {
-            Process process = runDiskpart();
+            Process process = RunDiskpart();
             process.StandardInput.WriteLine("list disk");
-            return exitDiskpart(process);
+            return ExitDiskpart(process);
         }
 
-        private static string exitDiskpart(Process process)
+        private static string ExitDiskpart(Process process)
         {
             process.StandardInput.WriteLine("exit");
             string output = process.StandardOutput.ReadToEnd();
@@ -67,7 +67,7 @@ namespace DiskPartForm
             return output;
         }
 
-        private static Process runDiskpart()
+        private static Process RunDiskpart()
         {
             Process process = new Process();
             process.StartInfo.FileName = "diskpart.exe";
