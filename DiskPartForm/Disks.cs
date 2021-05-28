@@ -38,6 +38,8 @@ namespace DiskPartForm
                     //update later
                 }
             }
+            //remove disk 0 (hard drive)
+            disks = disks.Where(d => d.Index != "Disk 0").ToList();
             return disks;
         }
 
@@ -46,10 +48,14 @@ namespace DiskPartForm
             Process process = RunDiskpart();
             process.StandardInput.WriteLine($"Select {index}");
             process.StandardInput.WriteLine("Clean");
+            process.StandardInput.WriteLine("Clean");
             process.StandardInput.WriteLine("Create Partition Primary");
             process.StandardInput.WriteLine($"Format fs={formatType} Quick");
             process.StandardInput.WriteLine("Active");
-            return ExitDiskpart(process);
+            var cleaningResult = ExitDiskpart(process);
+            cleaningResult = cleaningResult.Replace("DiskPart has encountered an error: Access is denied.", "");
+            cleaningResult = cleaningResult.Replace("See the System Event Log for more information.", "");
+            return cleaningResult;
         }
 
         private static string GetDiskstable()

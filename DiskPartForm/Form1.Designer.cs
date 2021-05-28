@@ -33,8 +33,8 @@ namespace DiskPartForm
             this.disksComboBox = new System.Windows.Forms.ComboBox();
             this.refreshButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.fat32RadioButton = new System.Windows.Forms.RadioButton();
             this.ntfsRadioButton = new System.Windows.Forms.RadioButton();
+            this.fat32RadioButton = new System.Windows.Forms.RadioButton();
             this.repairButton = new System.Windows.Forms.Button();
             this.resultTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -71,6 +71,16 @@ namespace DiskPartForm
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Format type";
             // 
+            // ntfsRadioButton
+            // 
+            this.ntfsRadioButton.AutoSize = true;
+            this.ntfsRadioButton.Location = new System.Drawing.Point(7, 44);
+            this.ntfsRadioButton.Name = "ntfsRadioButton";
+            this.ntfsRadioButton.Size = new System.Drawing.Size(44, 17);
+            this.ntfsRadioButton.TabIndex = 1;
+            this.ntfsRadioButton.Text = "ntfs";
+            this.ntfsRadioButton.UseVisualStyleBackColor = true;
+            // 
             // fat32RadioButton
             // 
             this.fat32RadioButton.AutoSize = true;
@@ -82,16 +92,6 @@ namespace DiskPartForm
             this.fat32RadioButton.TabStop = true;
             this.fat32RadioButton.Text = "fat32";
             this.fat32RadioButton.UseVisualStyleBackColor = true;
-            // 
-            // ntfsRadioButton
-            // 
-            this.ntfsRadioButton.AutoSize = true;
-            this.ntfsRadioButton.Location = new System.Drawing.Point(7, 44);
-            this.ntfsRadioButton.Name = "ntfsRadioButton";
-            this.ntfsRadioButton.Size = new System.Drawing.Size(44, 17);
-            this.ntfsRadioButton.TabIndex = 1;
-            this.ntfsRadioButton.Text = "ntfs";
-            this.ntfsRadioButton.UseVisualStyleBackColor = true;
             // 
             // repairButton
             // 
@@ -150,7 +150,7 @@ namespace DiskPartForm
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(597, 390);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Diskpart clean";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

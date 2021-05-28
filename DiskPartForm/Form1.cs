@@ -21,6 +21,7 @@ namespace DiskPartForm
         private List<Disk> Drivers { get; set; } = Disks.GetDisks();
         private void RefreshButton_Click(object sender, EventArgs e)
         {
+            Drivers = Disks.GetDisks();
             var formatedDriversList = (from d in Drivers
                                        select new { Name = $"{d.Index} - ({d.status}) - {d.Size}", Value = d.Index }).ToList();
             disksComboBox.DataSource = formatedDriversList;
